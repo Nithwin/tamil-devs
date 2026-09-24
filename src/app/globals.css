@@ -3,12 +3,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #ffffff;
-  --bg-subtle: #f9fafb;
+  --bg: #f8fafc;
+  --bg-subtle: #f1f5f9;
   --card: #ffffff;
-  --border: #e5e7eb;
-  --text: #111827;
-  --text-muted: #6b7280;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
   --brand: #5865f2;
   --brand-hover: #4752c4;
 }
@@ -18,14 +18,18 @@
   --bg-subtle: #12151e;
   --card: #131722;
   --border: #1f2533;
-  --text: #f9fafb;
-  --text-muted: #9ca3af;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
   --brand: #5865f2;
   --brand-hover: #4752c4;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -35,4 +39,14 @@ body {
   min-height: 100vh;
   margin: 0;
   transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Subtle selection colors */
+::selection {
+  background-color: rgba(37, 99, 235, 0.15);
+  color: #2563eb;
+}
+.dark ::selection {
+  background-color: rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
 }

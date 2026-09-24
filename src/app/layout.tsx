@@ -19,8 +19,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tamildevs.vercel.app"),
+  metadataBase: new URL("https://tamil-devs.vercel.app"),
   title: "Tamil Devs | தமிழ் Tech Community",
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
   description:
     "The premier Discord community connecting Tamil software engineers, freshers, students, and tech enthusiasts worldwide. Resume reviews, code PR reviews, mock interviews, AI channels, open source collab, and career mentorship.",
   keywords: [
@@ -39,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Connect with Tamil software engineers worldwide. Resume reviews, code reviews, mock interviews, and career mentorship — all in one place.",
     type: "website",
-    url: "https://tamildevs.vercel.app",
+    url: "https://tamil-devs.vercel.app",
     images: [{ url: "/logo.jpg", width: 1200, height: 630, alt: "Tamil Devs Community" }],
   },
   twitter: {
@@ -53,6 +58,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      {/* Disable browser scroll-restoration so refresh always starts at top */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }`,
+          }}
+        />
+      </head>
       <body className={`${inter.className} min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}

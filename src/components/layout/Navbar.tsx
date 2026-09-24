@@ -7,6 +7,12 @@ import { SITE_CONFIG } from "@/config/constants";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Menu, X } from "lucide-react";
 
+const NAV_LINKS = [
+  { label: "What We Do", href: "#features" },
+  { label: "Standards", href: "#guidelines" },
+  { label: "FAQ", href: "#faq" },
+];
+
 function DiscordIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -53,6 +59,19 @@ export function Navbar() {
           </span>
         </Link>
 
+        {/* Center Section Jump Links */}
+        <nav className="hidden md:flex items-center gap-1">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white px-3 py-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
         {/* Right Actions */}
         <div className="flex items-center gap-2 shrink-0">
           <ThemeToggle />
@@ -93,6 +112,18 @@ export function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 max-w-4xl mx-auto rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-[#11131a]/95 backdrop-blur-md p-4 shadow-lg">
+          <nav className="flex flex-col gap-1 pb-3 mb-3 border-b border-zinc-200 dark:border-zinc-800">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-1.5 px-3 rounded-lg text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
           <div className="flex flex-col gap-2.5">
             <a
               href={SITE_CONFIG.discordInvite}

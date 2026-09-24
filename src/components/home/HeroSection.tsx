@@ -1,6 +1,11 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/config/constants";
+import { motion, AnimatePresence } from "framer-motion";
+
+const WORDS = ["Tamil", "தமிழ்"];
 
 function DiscordIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -23,6 +28,16 @@ function GitHubIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export function HeroSection() {
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % WORDS.length);
+    }, 2600);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="pt-16 pb-24 md:pt-24 md:pb-32 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
@@ -46,10 +61,29 @@ export function HeroSection() {
           />
         </div>
 
-        {/* Headline */}
+        {/* Headline with vertical sliding-down motion animation */}
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1] mb-5">
           Connect, collaborate, and level up with{" "}
-          <span className="text-blue-600 dark:text-blue-400">Tamil Devs</span>
+          <span className="text-blue-600 dark:text-blue-400 inline-flex items-center">
+            <span className="relative inline-flex overflow-hidden pt-1 pb-2.5 px-1.5 align-middle leading-normal">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={WORDS[wordIndex]}
+                  initial={{ opacity: 0, y: -26, filter: "blur(3px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: 26, filter: "blur(3px)" }}
+                  transition={{
+                    duration: 0.32,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="inline-block pb-0.5"
+                >
+                  {WORDS[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            <span className="ml-1">Devs</span>
+          </span>
         </h1>
 
         {/* Humanized Subtitle */}

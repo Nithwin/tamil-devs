@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { SITE_CONFIG } from "@/config/constants";
 import { ArrowLeft } from "lucide-react";
 
@@ -68,9 +69,7 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      <footer className="py-6 text-center text-xs text-zinc-500 border-t border-zinc-200/60 dark:border-zinc-800/60">
-        Tamil Devs • Built for Tamil developers worldwide.
-      </footer>
+      <Footer />
     </div>
   );
 }
