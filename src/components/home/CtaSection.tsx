@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/config/constants";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 function DiscordIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -12,38 +16,56 @@ function DiscordIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 export function CtaSection() {
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 border-t border-zinc-200/80 dark:border-zinc-800/80">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-zinc-200 dark:border-zinc-800 shadow-sm mx-auto mb-6">
-          <Image
-            src="/logo.jpg"
-            alt="Tamil Devs Logo"
-            fill
-            sizes="64px"
-            className="object-cover"
-          />
-        </div>
+    <section className="py-20 md:py-28 px-4 sm:px-6 border-t border-zinc-200/80 dark:border-zinc-800/80 relative">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="relative max-w-2xl mx-auto overflow-hidden rounded-3xl bg-white dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/90 p-8 sm:p-12 text-center shadow-lg shadow-zinc-200/50 dark:shadow-none"
+      >
+        {/* Glow orbs in background */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 -left-24 w-72 h-72 rounded-full bg-blue-500/10 dark:bg-blue-600/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-indigo-500/10 dark:bg-indigo-600/20 blur-3xl"
+        />
 
-        <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 mb-3">
-          Ready to join the community?
-        </h2>
+        <div className="relative z-10 flex flex-col items-center">
+          {/* Logo */}
+          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 shadow-md mb-6 ring-4 ring-blue-500/10 dark:ring-white/5">
+            <Image
+              src="/logo.jpg"
+              alt="Tamil Devs Logo"
+              fill
+              sizes="56px"
+              className="object-cover"
+            />
+          </div>
 
-        <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-lg mx-auto leading-relaxed mb-8">
-          Hop into our Discord server to introduce yourself, get code feedback, or just hang out with fellow Tamil developers.
-        </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-3">
+            Ready to join the community?
+          </h2>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+          <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-md mx-auto leading-relaxed mb-8">
+            Hop into our Discord server to introduce yourself, get code feedback, or just hang out with fellow Tamil developers.
+          </p>
+
           <a
             href={SITE_CONFIG.discordInvite}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full bg-[#5865F2] hover:bg-[#4752c4] text-white text-sm font-semibold transition-colors shadow-xs"
+            className="group inline-flex items-center justify-center gap-2.5 h-11 px-7 rounded-full bg-[#5865F2] hover:bg-[#4752c4] text-white text-sm font-semibold transition-colors shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/30"
           >
             <DiscordIcon className="w-4 h-4 text-white" />
             <span>Join Tamil Devs on Discord</span>
+            <ArrowRight className="w-4 h-4 opacity-75 group-hover:translate-x-0.5 transition-transform" />
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

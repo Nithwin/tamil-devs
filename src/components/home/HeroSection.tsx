@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { SITE_CONFIG } from "@/config/constants";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const WORDS = ["Tamil", "தமிழ்"];
 
@@ -33,87 +34,122 @@ export function HeroSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % WORDS.length);
-    }, 2600);
-
+    }, 2800);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="pt-16 pb-24 md:pt-24 md:pb-32 px-4 sm:px-6">
-      <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
-        {/* Top Community Status Pill */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 px-3.5 py-1 mb-8 shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            Open Discord Community for Tamil Developers
+    <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 px-4 sm:px-6 overflow-hidden">
+      {/* Radial glow behind hero */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 flex items-center justify-center -z-10"
+      >
+        <div className="w-[600px] h-[360px] rounded-full bg-blue-500/10 dark:bg-indigo-500/10 blur-[100px]" />
+      </div>
+
+      <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
+        {/* Status pill */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md px-4 py-1.5 mb-8 shadow-xs"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-        </div>
+          <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300 tracking-wide">
+            Open Community · Tamil Developers
+          </span>
+        </motion.div>
 
-        {/* Community Logo */}
-        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-zinc-200 dark:border-zinc-800 shadow-sm mb-6">
-          <Image
-            src="/logo.jpg"
-            alt="Tamil Devs Logo"
-            fill
-            sizes="96px"
-            className="object-cover"
-            priority
-          />
-        </div>
+        {/* Logo with gentle elevation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          className="relative mb-6"
+        >
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white dark:border-zinc-800 shadow-xl ring-4 ring-blue-500/10 dark:ring-indigo-500/20">
+            <Image
+              src="/logo.jpg"
+              alt="Tamil Devs Logo"
+              fill
+              sizes="96px"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
 
-        {/* Headline with vertical sliding-down motion animation */}
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1] mb-5">
-          Connect, collaborate, and level up with{" "}
-          <span className="text-blue-600 dark:text-blue-400 inline-flex items-center">
-            <span className="relative inline-flex overflow-hidden pt-1 pb-2.5 px-1.5 align-middle leading-normal">
+        {/* Headline with animated sliding Tamil / Tamil word */}
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-5"
+        >
+          Connect &amp; level up with{" "}
+          <span className="inline-flex items-baseline whitespace-nowrap">
+            <span className="relative inline-flex overflow-hidden pt-1 pb-2 sm:pb-3 px-1.5 align-baseline">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={WORDS[wordIndex]}
                   initial={{ opacity: 0, y: -26, filter: "blur(3px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: 26, filter: "blur(3px)" }}
-                  transition={{
-                    duration: 0.32,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="inline-block pb-0.5"
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block pb-0.5 text-blue-600 dark:text-blue-400 font-extrabold"
                 >
                   {WORDS[wordIndex]}
                 </motion.span>
               </AnimatePresence>
             </span>
-            <span className="ml-1">Devs</span>
+            <span className="text-zinc-900 dark:text-zinc-50">Devs</span>
           </span>
-        </h1>
+        </motion.h1>
 
         {/* Humanized Subtitle */}
-        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed mb-10">
-          A place where Tamil software engineers, freshers, and students hang out.
-          Get honest code reviews, practice live interviews, and learn directly from peers.
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
+          className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed mb-9"
+        >
+          A community for Tamil software engineers, freshers, and students.
+          Get honest code reviews, peer mock interviews, and career guidance.
+        </motion.p>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto"
+        >
           <a
             href={SITE_CONFIG.discordInvite}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full bg-[#5865F2] hover:bg-[#4752c4] text-white text-sm font-semibold transition-colors shadow-xs"
+            className="group inline-flex items-center justify-center gap-2.5 h-11 px-6 w-full sm:w-auto rounded-full bg-[#5865F2] hover:bg-[#4752c4] text-white text-sm font-semibold transition-colors shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/30"
           >
             <DiscordIcon className="w-4 h-4 text-white" />
             <span>Join Discord</span>
+            <ArrowRight className="w-3.5 h-3.5 opacity-75 group-hover:translate-x-0.5 transition-transform" />
           </a>
 
           <a
             href={SITE_CONFIG.githubRepo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-sm font-medium transition-colors shadow-2xs"
           >
-            <GitHubIcon className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
+            <GitHubIcon className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
             <span>Star on GitHub</span>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

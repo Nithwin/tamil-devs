@@ -52,22 +52,40 @@ export const metadata: Metadata = {
     title: "Tamil Devs | தமிழ் Tech Community",
     description: "The premier Discord community for Tamil software engineers worldwide.",
   },
+  verification: {
+    google: "7Ff11gtDkkUfoK11mLcMlTWgq8r4WmxJ9j_j8oau_YA",
+  },
   robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      {/* Disable browser scroll-restoration so refresh always starts at top */}
       <head>
+        {/*
+          Blocking inline script — runs synchronously before first paint.
+          1. Sets dark/light class immediately so there is zero FOUC.
+          2. Disables browser scroll-restoration so refresh always lands at top.
+        */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }`,
+            __html: `
+(function() {
+  try {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = stored === 'dark' || (!stored && prefersDark);
+    if (isDark) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  } catch(e) {}
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+})();
+            `.trim(),
           }}
         />
       </head>
-      <body className={`${inter.className} min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={`${inter.className} min-h-screen antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>
