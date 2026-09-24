@@ -43,57 +43,6 @@ Whether you are writing your first line of code, preparing for FAANG/product com
 
 ---
 
-## 📂 Discord Server Architecture & Channels
-
-```
-📢 INFORMATION & WELCOME
-├── 📜┃rules-and-guidelines      - Community code of conduct (Tamil & English)
-├── 📢┃announcements             - Hackathons, meetups, and server updates
-├── 👋┃introductions             - Say vanakkam and share your background
-├── 🎭┃select-roles              - Auto-assign your domain & career roles
-├── 📌┃curated-resources         - Free roadmaps, certifications, and toolkits
-└── 💡┃community-suggestions      - Member-driven feature & event proposals
-
-💬 COMMUNITY LOUNGE
-├── 💬┃general-chat              - Everyday Tamil tech discussions & banter
-├── 💡┃project-showcase          - Demos, SaaS launches, and open-source repos
-├── 📢┃creators-and-promotions   - YouTube tutorials, blogs, and dev content
-├── 📄┃resume-review-and-roast   📌 [FORUM] Line-by-line resume critique
-└── ☕┃chill-and-memes           - Off-topic conversations & tech humor
-
-💼 CAREERS & OPPORTUNITIES
-├── 💼┃jobs-and-referrals        - Hiring posts & internal company referrals
-├── 🙋┃looking-for-work          - Freshers & devs posting profiles to get hired
-├── 💻┃freelance-and-contracts   - Upwork, US remote gigs, contracts, invoicing
-└── 🚀┃startups-and-saas         - Indie hacking, MVP building, and marketing
-
-💻 CORE ENGINEERING
-├── 💻┃fullstack-dev             - Next.js, React, Node.js, Express, PostgreSQL
-├── ⚙️┃backend-and-apis          - Go, Java/Spring, Python, System Design, REST
-├── 🎨┃frontend-and-uiux         - CSS tricks, Tailwind, UI architecture, Figma
-├── ⚡┃systems-and-lowlevel      - C, C++, Rust, Zig, Linux kernel, OS dev
-├── ☁️┃cloud-devops-security     - Docker, K8s, AWS, GCP, CI/CD, Cybersecurity
-├── 📱┃mobile-app-dev            - Flutter, React Native, iOS Swift, Android
-├── 👀┃code-review               📌 [FORUM] Pull Request & code architecture
-├── 🧮┃dsa-and-interviews        - LeetCode patterns, OA prep, System Design
-└── 🆘┃code-help-and-debug       - Fast debugging and error troubleshooting
-
-🔬 AI, HARDWARE & FUTURE TECH
-├── ✨┃vibe-coding-and-tools     - Cursor, Claude Code, Windsurf, AI workflows
-├── 🤖┃genai-and-llms            - RAG, Ollama, local models, LangChain, Agents
-├── 🧠┃ai-ml-and-data            - PyTorch, Machine Learning, Data Science
-├── 🔌┃hardware-and-iot          - Arduino, ESP32, Raspberry Pi, Robotics
-└── 🌐┃open-source-learn-collab  - Beginners learning FOSS & Tamil projects
-
-🎙️ VOICE & INTERVIEWS
-├── ☕ 🔊 Chill Lounge
-├── 💻 🔊 Silent Study & Co-Working (Lofi beats & shared focus)
-├── 🎙️ 🔊 Mock Interview Room 1 & 2
-└── 🏟️ 🔊 Tech Talk Stage (Live community AMAs & presentations)
-```
-
----
-
 ## 🌐 Community Website & Open Source Repository
 
 This repository powers the official landing page and resource hub at [**tamil-devs.vercel.app**](https://tamil-devs.vercel.app).
