@@ -19,17 +19,21 @@ export function SectionHeading({
   const isCenter = align === "center";
 
   return (
-    <div className={`mb-14 ${isCenter ? "text-center max-w-3xl mx-auto" : "max-w-2xl"}`}>
+    <div className={`mb-12 md:mb-16 ${isCenter ? "text-center max-w-2xl mx-auto" : "max-w-2xl"}`}>
       {badge && (
         <div className="mb-4">
-          <Badge>{badge}</Badge>
+          <Badge variant="brand">{badge}</Badge>
         </div>
       )}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 leading-tight">
-        <span className="text-slate-100">{titleLight} </span>
-        <span className="gradient-text">{titleHighlight}</span>
+      <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 mb-3 leading-tight">
+        <span>{titleLight} </span>
+        <span className="text-blue-600 dark:text-blue-400 font-extrabold">{titleHighlight}</span>
       </h2>
-      {subtitle && <p className="text-base sm:text-lg text-slate-400 leading-relaxed">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

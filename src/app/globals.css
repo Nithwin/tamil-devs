@@ -1,103 +1,135 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --bg-primary: #080b14;
-  --accent-cyan: #06b6d4;
-  --accent-violet: #7c3aed;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent-color: #2563eb;
+  --discord-color: #5865F2;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+.dark {
+  --bg-primary: #090a0f;
+  --bg-secondary: #0f121a;
+  --bg-card: #131722;
+  --border-color: #1e2535;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-color: #3b82f6;
+  --discord-color: #5865F2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #080b14; }
-::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 3px; }
-
-.gradient-text {
-  background: linear-gradient(135deg, #06b6d4, #7c3aed, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 
-.glass-card {
-  background: rgba(17,24,39,0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(6,182,212,0.15);
-  transition: all 0.3s ease;
+/* Clean UI cards */
+.clean-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
-.glass-card:hover {
-  border-color: rgba(6,182,212,0.4);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(6,182,212,0.12);
+.clean-card:hover {
+  border-color: #94a3b8;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
 }
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
-  background-size: 50px 50px;
+.dark .clean-card:hover {
+  border-color: #384258;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #7c3aed, #06b6d4);
-  color: white;
-  font-weight: 700;
-  border-radius: 12px;
+/* Discord brand button */
+.btn-discord {
+  background-color: #5865F2;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.75rem;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(124,58,237,0.5);
+.btn-discord:hover {
+  background-color: #4752c4;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.35);
 }
 
-.badge {
-  background: rgba(6,182,212,0.1);
-  border: 1px solid rgba(6,182,212,0.3);
-  color: #06b6d4;
-  font-size: 0.75rem;
+/* Outline button */
+.btn-outline {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 14px;
-  border-radius: 999px;
+  border-radius: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.btn-outline:hover {
+  background-color: var(--bg-secondary);
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.dark .btn-outline:hover {
+  border-color: #475569;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+/* Subtle dot pattern for hero section */
+.subtle-dots {
+  background-image: radial-gradient(rgba(100, 116, 139, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
-.float { animation: float 5s ease-in-out infinite; }
-
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(6,182,212,0.3); }
-  50% { box-shadow: 0 0 50px rgba(6,182,212,0.7), 0 0 80px rgba(124,58,237,0.3); }
+.dark .subtle-dots {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
-.pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-in-up { animation: fadeInUp 0.7s ease forwards; }
-
+/* Channel list items */
 .channel-item {
-  color: #94a3b8;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
 }
 .channel-item:hover {
-  color: #f1f5f9;
-  background-color: rgba(6, 182, 212, 0.08);
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
 }
-

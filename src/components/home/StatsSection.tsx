@@ -3,18 +3,22 @@ import { stats } from "@/data/communityData";
 
 export function StatsSection() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 w-full max-w-4xl mx-auto mt-8">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl mx-auto">
       {stats.map((s) => (
         <div
           key={s.label}
-          className="glass-card rounded-2xl p-5 text-center flex flex-col justify-center items-center group"
+          className="clean-card rounded-xl p-5 text-center flex flex-col justify-center items-center"
         >
-          <div className="text-3xl md:text-4xl font-extrabold gradient-text tracking-tight group-hover:scale-105 transition-transform duration-300">
+          <div className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
             {s.number}
           </div>
-          <div className="text-sm font-semibold text-slate-200 mt-1">{s.label}</div>
+          <div className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 mt-1">
+            {s.label}
+          </div>
           {s.detail && (
-            <div className="text-xs text-slate-400 mt-0.5">{s.detail}</div>
+            <div className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+              {s.detail}
+            </div>
           )}
         </div>
       ))}
