@@ -44,16 +44,16 @@ export function Navbar() {
   };
 
   return (
-    <div className="sticky top-4 sm:top-5 z-50 w-full px-4 sm:px-6">
-      <header className="max-w-4xl mx-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-[#11131a]/90 backdrop-blur-md px-4 sm:px-5 py-2.5 flex items-center justify-between shadow-sm transition-colors">
+    <div className="sticky top-3 sm:top-5 z-50 w-full px-3 sm:px-6">
+      <header className="max-w-4xl mx-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-[#11131a]/90 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between shadow-sm transition-colors">
         {/* Brand - clicking scrolls smoothly to top */}
         <Link
           href="/"
           onClick={scrollToTop}
-          className="flex items-center gap-2.5 shrink-0 cursor-pointer group"
+          className="flex items-center gap-2 sm:gap-2.5 shrink-0 cursor-pointer group"
           title="Back to top"
         >
-          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-700 shrink-0 group-hover:scale-105 transition-transform">
+          <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-700 shrink-0 group-hover:scale-105 transition-transform">
             <Image
               src="/logo.jpg"
               alt="Tamil Devs Logo"
@@ -86,7 +86,7 @@ export function Navbar() {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <ThemeToggle />
 
           <a
@@ -95,7 +95,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             aria-label="GitHub Repository"
             title="GitHub Repository"
-            className="w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-900/80 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/70 dark:hover:bg-zinc-800/90 transition-all flex items-center justify-center shrink-0"
+            className="hidden sm:flex w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-900/80 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/70 dark:hover:bg-zinc-800/90 transition-all items-center justify-center shrink-0"
           >
             <GitHubIcon className="w-4 h-4" />
           </a>
@@ -104,7 +104,7 @@ export function Navbar() {
             href={SITE_CONFIG.discordInvite}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 h-9 px-4 rounded-full bg-[#5865F2] hover:bg-[#4752c4] text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs shrink-0"
+            className="hidden sm:inline-flex items-center justify-center gap-2 h-9 px-4 rounded-full bg-[#5865F2] hover:bg-[#4752c4] text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs shrink-0"
           >
             <DiscordIcon className="w-4 h-4 text-white" />
             <span>Join Discord</span>

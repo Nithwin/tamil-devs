@@ -89,10 +89,10 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12] mb-5"
+          className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15] mb-5"
         >
           Connect &amp; level up with{" "}
-          <span className="inline-flex items-baseline whitespace-nowrap">
+          <span className="inline-flex items-baseline sm:whitespace-nowrap">
             <span className="relative inline-flex overflow-hidden pt-1 pb-2 sm:pb-3 px-1.5 align-baseline">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
