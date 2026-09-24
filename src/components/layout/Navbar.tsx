@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
+  { label: "Home", href: "#", isHome: true },
   { label: "What We Do", href: "#features" },
   { label: "Standards", href: "#guidelines" },
   { label: "FAQ", href: "#faq" },
@@ -36,12 +37,23 @@ function GitHubIcon({ className = "w-4 h-4" }: { className?: string }) {
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const scrollToTop = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="sticky top-4 sm:top-5 z-50 w-full px-4 sm:px-6">
       <header className="max-w-4xl mx-auto rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-[#11131a]/90 backdrop-blur-md px-4 sm:px-5 py-2.5 flex items-center justify-between shadow-sm transition-colors">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-700 shrink-0">
+        {/* Brand - clicking scrolls smoothly to top */}
+        <Link
+          href="/"
+          onClick={scrollToTop}
+          className="flex items-center gap-2.5 shrink-0 cursor-pointer group"
+          title="Back to top"
+        >
+          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-700 shrink-0 group-hover:scale-105 transition-transform">
             <Image
               src="/logo.jpg"
               alt="Tamil Devs Logo"
@@ -51,7 +63,7 @@ export function Navbar() {
               priority
             />
           </div>
-          <span className="font-semibold text-sm sm:text-base tracking-tight text-zinc-900 dark:text-zinc-100">
+          <span className="font-semibold text-sm sm:text-base tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {SITE_CONFIG.name}
           </span>
           <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
@@ -65,7 +77,8 @@ export function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white px-3 py-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors"
+              onClick={link.isHome ? scrollToTop : undefined}
+              className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white px-3 py-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer"
             >
               {link.label}
             </a>
@@ -117,8 +130,8 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-1.5 px-3 rounded-lg text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors font-medium"
+                onClick={link.isHome ? scrollToTop : () => setMobileMenuOpen(false)}
+                className="py-1.5 px-3 rounded-lg text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors font-medium cursor-pointer"
               >
                 {link.label}
               </a>

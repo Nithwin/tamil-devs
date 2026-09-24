@@ -86,25 +86,11 @@ To run the website locally on your machine:
 
 ---
 
-## 📚 Curated Tamil Tech Resources
-
-A handpicked collection of top Tamil tech content creators and open-source educators:
-
-* **Error Makes Clever** — Full-stack web development, Python, JavaScript, and beginner-friendly coding tutorials in Tamil.
-* **Tutor Joes Stanley** — Comprehensive language deep-dives (C, C++, Java, PHP, Python) with extensive Tamil playlists.
-* **Let's Make Engineering Simple (LMES)** — Conceptual science and engineering fundamentals explained visually in Tamil.
-* **Code With Aravind** — Modern web frameworks, React, and frontend development.
-* **Cyberdude Networks** — Web development, UI/UX, and software tooling in Tamil.
-
-*(Want to suggest a creator or project? Submit a PR!)*
-
----
-
 ## 🤝 Contributing
 
 We welcome contributions of all kinds!
 - 🎨 **Website improvements:** Enhancing UI/UX, adding sections, fixing bugs, and improving SEO/accessibility.
-- 📚 **Resource curation:** Adding high-quality Tamil tech channels, roadmaps, tools, and open-source projects.
+- 📚 **Documentation & Guides:** Adding learning roadmaps, cheatsheets, and developer resources.
 - 💬 **Community help:** Participating in Discord discussions and reviewing peer PRs/resumes.
 
 Please review our [Contributing Guidelines](CONTRIBUTING.md) to get started.
