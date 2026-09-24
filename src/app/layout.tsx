@@ -52,13 +52,35 @@ export const metadata: Metadata = {
     title: "Tamil Devs | தமிழ் Tech Community",
     description: "The premier Discord community for Tamil software engineers worldwide.",
   },
+  alternates: {
+    canonical: "https://tamil-devs.vercel.app",
+  },
   robots: { index: true, follow: true },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Tamil Devs",
+  alternateName: "தமிழ் Devs",
+  url: "https://tamil-devs.vercel.app",
+  logo: "https://tamil-devs.vercel.app/logo.jpg",
+  sameAs: [
+    "https://github.com/Nithwin/tamil-devs",
+    "https://discord.gg/ucNesJ3P44",
+  ],
+  description:
+    "The premier Discord community connecting Tamil software engineers, freshers, students, and tech enthusiasts worldwide.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/*
           Blocking inline script — runs synchronously before first paint.
           1. Sets dark/light class immediately so there is zero FOUC.
