@@ -1,0 +1,55 @@
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#080b14",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://tamildevs.vercel.app"),
+  title: "Tamil Devs | தமிழ் Tech Community",
+  description:
+    "The premier Discord community connecting Tamil software engineers, freshers, students, and tech enthusiasts worldwide. Resume reviews, code PR reviews, mock interviews, AI channels, open source collab, and career mentorship.",
+  keywords: [
+    "Tamil developers",
+    "Tamil Nadu tech",
+    "Tamil coding community",
+    "Chennai developers Discord",
+    "India tech Discord",
+    "Tamil software engineers",
+    "Tamil DevOps",
+    "Tamil AI engineers",
+  ],
+  authors: [{ name: "Tamil Devs Community" }],
+  openGraph: {
+    title: "Tamil Devs | தமிழ் Tech Community",
+    description:
+      "Connect with Tamil software engineers worldwide. Resume reviews, code reviews, mock interviews, and career mentorship — all in one place.",
+    type: "website",
+    url: "https://tamildevs.vercel.app",
+    images: [{ url: "/logo.jpg", width: 1200, height: 630, alt: "Tamil Devs Community" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tamil Devs | தமிழ் Tech Community",
+    description: "The premier Discord community for Tamil software engineers worldwide.",
+  },
+  robots: { index: true, follow: true },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body className={inter.className}>{children}</body>
+    </html>
+  );
+}
