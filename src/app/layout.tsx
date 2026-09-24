@@ -52,9 +52,6 @@ export const metadata: Metadata = {
     title: "Tamil Devs | தமிழ் Tech Community",
     description: "The premier Discord community for Tamil software engineers worldwide.",
   },
-  verification: {
-    google: "7Ff11gtDkkUfoK11mLcMlTWgq8r4WmxJ9j_j8oau_YA",
-  },
   robots: { index: true, follow: true },
 };
 
